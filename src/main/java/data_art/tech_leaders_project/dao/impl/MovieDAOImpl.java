@@ -1,4 +1,4 @@
-package data_art.tech_leaders_project.dao;
+package data_art.tech_leaders_project.dao.impl;
 
 import data_art.tech_leaders_project.dto.MovieDTO;
 import org.springframework.stereotype.Repository;
