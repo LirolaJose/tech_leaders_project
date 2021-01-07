@@ -5,5 +5,5 @@ import data_art.tech_leaders_project.dto.DirectorDTO;
 import java.util.List;
 
 public interface DirectorService {
-    List<DirectorDTO> findAllDirectors();
+    List<DirectorDTO> getAllDirectors();
 }
