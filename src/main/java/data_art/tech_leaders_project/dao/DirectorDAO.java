@@ -8,5 +8,5 @@ public interface DirectorDAO extends JpaRepository<DirectorDTO, Integer> {
     DirectorDTO findById(int id);
 
     @Query(value = "SELECT * FROM directors d WHERE d.name = ?1 OR d.last_name = ?2", nativeQuery = true)
-    DirectorDTO findFirstByLast_name(String name, String lastName);
+    DirectorDTO findDirectorDTOByNameOrLast_name(String name, String lastName);
 }

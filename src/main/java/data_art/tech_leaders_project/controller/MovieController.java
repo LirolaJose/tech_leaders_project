@@ -5,11 +5,11 @@ import data_art.tech_leaders_project.dto.DirectorDTO;
 import data_art.tech_leaders_project.dto.MovieDTO;
 import data_art.tech_leaders_project.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -48,7 +48,7 @@ public class MovieController {
     @RequestMapping("/byDirector")
     public List<MovieDTO> getAllMoviesByDirector(@RequestParam String name) {
         log.info("show list of movies by director {}", name);
-        DirectorDTO directorDTO = directorDAO.findFirstByLast_name(name, name);
+        DirectorDTO directorDTO = directorDAO.findDirectorDTOByNameOrLast_name(name, name);
         return movieService.getAllMoviesByDirector(directorDTO);
     }
 }
