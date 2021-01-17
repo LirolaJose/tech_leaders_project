@@ -12,4 +12,5 @@ public interface MovieDAO extends JpaRepository<MovieDTO, Integer> {
     List<MovieDTO> findAllMovieDTOByYear(int year);
     List<MovieDTO> findAllMovieDTOByDirectorDTO(DirectorDTO directorDTO);
     List<MovieDTO> findAllMovieDTOByGenres(GenreDTO genreDTO);
+    MovieDTO findMovieDTOById(int id);
 }

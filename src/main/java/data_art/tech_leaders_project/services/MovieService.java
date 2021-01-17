@@ -16,4 +16,6 @@ public interface MovieService {
     List<MovieDTO> getAllMoviesByDirector(DirectorDTO directorDTO);
 
     List<MovieDTO> getAllMoviesByGenre(GenreDTO genreDTO);
+
+    MovieDTO getMovieById(int id);
 }

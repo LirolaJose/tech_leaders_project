@@ -58,8 +58,9 @@ public class TechLeadersProjectApplication implements CommandLineRunner {
 //        System.out.println(movieService.getMovies());
 //        System.out.println(movieService.getMovieByName("Kill Bill"));
 //        System.out.println(movieService.getAllMovieByYear(2003));
-        System.out.println(movieService.getAllMoviesByDirector(directorDTO));
-        System.out.println(movieService.getAllMoviesByGenre(genreDTO));
+//        System.out.println(movieService.getAllMoviesByDirector(directorDTO));
+//        System.out.println(movieService.getAllMoviesByGenre(genreDTO));
+        System.out.println(movieService.getMovieById(1));
         System.out.println("---run---");
     }
 }

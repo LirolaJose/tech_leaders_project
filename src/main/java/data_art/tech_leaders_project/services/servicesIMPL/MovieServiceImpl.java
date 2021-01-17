@@ -49,6 +49,11 @@ public class MovieServiceImpl implements MovieService {
         return movieDAO.findAllMovieDTOByGenres(genreDTO);
     }
 
+    @Override
+    public MovieDTO getMovieById(int id) {
+        return movieDAO.findMovieDTOById(id);
+    }
+
 }
 
 
