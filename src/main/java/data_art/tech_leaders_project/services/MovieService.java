@@ -18,4 +18,8 @@ public interface MovieService {
     List<MovieDTO> getAllMoviesByGenre(GenreDTO genreDTO);
 
     MovieDTO getMovieById(int id);
+
+//    void addMovie(String name, int year, int director_id, String country);
+
+   // void deleteMovieById (int id);
 }

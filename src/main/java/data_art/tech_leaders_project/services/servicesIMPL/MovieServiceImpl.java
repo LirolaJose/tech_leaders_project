@@ -28,7 +28,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieDTO getMovieByName(String name) {
         log.info("get movie by name {}", name);
-        return movieDAO.findTopByNameOrderByNameDesc(name);
+        return movieDAO.findMovieDTOByName(name);
     }
 
     @Override
@@ -51,8 +51,21 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDTO getMovieById(int id) {
+        log.info("get movie by id {}", id);
         return movieDAO.findMovieDTOById(id);
     }
+
+//    @Override
+//    public void addMovie(String name, int year, int director_id, String country) {
+//        log.info("add movie with parameters {}, {}, {}, {}", name, year, director_id, country);
+//        movieDAO.addMovie(name, year, director_id, country);
+//    }
+
+//    @Override
+//    public void deleteMovieById(int id) {
+//        log.info("delete movie by id {}", id);
+//        movieDAO.deleteMovieDTOById(id);
+//    }
 
 }
 

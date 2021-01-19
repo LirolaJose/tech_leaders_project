@@ -3,6 +3,7 @@ package data_art.tech_leaders_project;
 
 import data_art.tech_leaders_project.dao.DirectorDAO;
 import data_art.tech_leaders_project.dao.GenreDAO;
+import data_art.tech_leaders_project.dao.MovieDAO;
 import data_art.tech_leaders_project.dto.DirectorDTO;
 import data_art.tech_leaders_project.dto.GenreDTO;
 import data_art.tech_leaders_project.services.DirectorService;
@@ -23,15 +24,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Slf4j
 public class TechLeadersProjectApplication implements CommandLineRunner {
 
-
-
+    final MovieDAO movieDAO;
     final DirectorDAO directorDAO;
     final GenreDAO genreDAO;
     final MovieService movieService;
     final DirectorService directorService;
     final GenreService genreService;
 
-    public TechLeadersProjectApplication(MovieService movieService, DirectorService directorService, GenreService genreService, DirectorDAO directorDAO, GenreDAO genreDAO) {
+    public TechLeadersProjectApplication(MovieDAO movieDAO, MovieService movieService, DirectorService directorService, GenreService genreService, DirectorDAO directorDAO, GenreDAO genreDAO) {
+        this.movieDAO = movieDAO;
         this.movieService = movieService;
         this.directorService = directorService;
         this.genreService = genreService;
@@ -56,11 +57,13 @@ public class TechLeadersProjectApplication implements CommandLineRunner {
         GenreDTO genreDTO = genreDAO.findById(3);
         System.out.println("---run---");
 //        System.out.println(movieService.getMovies());
-//        System.out.println(movieService.getMovieByName("Kill Bill"));
+//        System.out.println(movieService.getMovieByName("The Matrix"));
 //        System.out.println(movieService.getAllMovieByYear(2003));
 //        System.out.println(movieService.getAllMoviesByDirector(directorDTO));
 //        System.out.println(movieService.getAllMoviesByGenre(genreDTO));
-        System.out.println(movieService.getMovieById(1));
+        System.out.println(movieService.getMovieById(7));
+        System.out.println(directorDAO.findDirectorDTOByNameOrLast_name("Spielberg", "Spielberg"));
+        movieService.addMovie("Film", 2021, 1, "Ukraine");
         System.out.println("---run---");
     }
 }
