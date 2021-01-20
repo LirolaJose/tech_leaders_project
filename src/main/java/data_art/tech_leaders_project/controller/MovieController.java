@@ -50,4 +50,10 @@ public class MovieController {
         DirectorEntity directorEntity = directorRepository.findDirectorEntityByNameOrLast_name(name, name);
         return movieService.getAllMoviesByDirector(directorEntity);
     }
+
+    @RequestMapping("/byId")
+    public MovieEntity getMovieById (@RequestParam int id){
+        log.info("show movie by id {}", id);
+        return movieService.getMovieById(id);
+    }
 }

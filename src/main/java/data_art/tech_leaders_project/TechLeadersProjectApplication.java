@@ -63,7 +63,6 @@ public class TechLeadersProjectApplication implements CommandLineRunner {
 //        System.out.println(movieService.getAllMoviesByGenre(genreDTO));
         System.out.println(movieService.getMovieById(7));
         System.out.println(directorRepository.findDirectorEntityByNameOrLast_name("Spielberg", "Spielberg"));
-//        movieService.addMovie("Film", 2021, 1, "Ukraine", 1);
         System.out.println("---run---");
     }
 }
