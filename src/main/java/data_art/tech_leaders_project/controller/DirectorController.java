@@ -18,7 +18,7 @@ public class DirectorController {
         this.directorRepository = directorRepository;
     }
 
-    @RequestMapping("/Directors")
+    @RequestMapping("/directors")
     public List<DirectorEntity> getAllDirectors(){
         log.info("show all directors in localhost 8081");
         return directorRepository.findAll();

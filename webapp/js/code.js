@@ -1,7 +1,7 @@
 function clickIN() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/Movies/allMovies"
+        url: "http://localhost:8081/movies/allMovies"
     }).done(function (listOfMovies) {
         console.log(listOfMovies);
         $("#movies").html(listOfMovies);
@@ -18,7 +18,7 @@ function clickIN() {
 function deleteByClick(id) {
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8081/Admin/deleteMovie?id=" + id
+        url: "http://localhost:8081/admin/deleteMovie?id=" + id
     }).done(function () {
         $("#button").click()
     }).fail(function (err) {
@@ -29,7 +29,7 @@ function deleteByClick(id) {
 function movieInfo(id) {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/Movies/byId?id=" + id
+        url: "http://localhost:8081/movies/byId?id=" + id
     }).done(function (movie) {
         console.log(movie);
         $("#movies").html(movie);

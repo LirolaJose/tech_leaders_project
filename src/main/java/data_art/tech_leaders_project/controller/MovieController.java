@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Movies")
+@RequestMapping("/movies")
 @Slf4j
 public class MovieController {
 
