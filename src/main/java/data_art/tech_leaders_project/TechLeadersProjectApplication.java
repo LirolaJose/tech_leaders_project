@@ -1,11 +1,11 @@
 package data_art.tech_leaders_project;
 
 
-import data_art.tech_leaders_project.dao.DirectorDAO;
-import data_art.tech_leaders_project.dao.GenreDAO;
-import data_art.tech_leaders_project.dao.MovieDAO;
-import data_art.tech_leaders_project.dto.DirectorDTO;
-import data_art.tech_leaders_project.dto.GenreDTO;
+import data_art.tech_leaders_project.dao.DirectorRepository;
+import data_art.tech_leaders_project.dao.GenreRepository;
+import data_art.tech_leaders_project.dao.MovieRepository;
+import data_art.tech_leaders_project.dto.DirectorEntity;
+import data_art.tech_leaders_project.dto.GenreEntity;
 import data_art.tech_leaders_project.services.DirectorService;
 import data_art.tech_leaders_project.services.GenreService;
 import data_art.tech_leaders_project.services.MovieService;
@@ -24,20 +24,20 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Slf4j
 public class TechLeadersProjectApplication implements CommandLineRunner {
 
-    final MovieDAO movieDAO;
-    final DirectorDAO directorDAO;
-    final GenreDAO genreDAO;
+    final MovieRepository movieRepository;
+    final DirectorRepository directorRepository;
+    final GenreRepository genreRepository;
     final MovieService movieService;
     final DirectorService directorService;
     final GenreService genreService;
 
-    public TechLeadersProjectApplication(MovieDAO movieDAO, MovieService movieService, DirectorService directorService, GenreService genreService, DirectorDAO directorDAO, GenreDAO genreDAO) {
-        this.movieDAO = movieDAO;
+    public TechLeadersProjectApplication(MovieRepository movieRepository, MovieService movieService, DirectorService directorService, GenreService genreService, DirectorRepository directorRepository, GenreRepository genreRepository) {
+        this.movieRepository = movieRepository;
         this.movieService = movieService;
         this.directorService = directorService;
         this.genreService = genreService;
-        this.directorDAO = directorDAO;
-        this.genreDAO = genreDAO;
+        this.directorRepository = directorRepository;
+        this.genreRepository = genreRepository;
     }
 
 
@@ -53,8 +53,8 @@ public class TechLeadersProjectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        DirectorDTO directorDTO = directorDAO.findById(6);
-        GenreDTO genreDTO = genreDAO.findById(3);
+        DirectorEntity directorEntity = directorRepository.findById(6);
+        GenreEntity genreEntity = genreRepository.findById(3);
         System.out.println("---run---");
 //        System.out.println(movieService.getMovies());
 //        System.out.println(movieService.getMovieByName("The Matrix"));
@@ -62,8 +62,8 @@ public class TechLeadersProjectApplication implements CommandLineRunner {
 //        System.out.println(movieService.getAllMoviesByDirector(directorDTO));
 //        System.out.println(movieService.getAllMoviesByGenre(genreDTO));
         System.out.println(movieService.getMovieById(7));
-        System.out.println(directorDAO.findDirectorDTOByNameOrLast_name("Spielberg", "Spielberg"));
-        movieService.addMovie("Film", 2021, 1, "Ukraine");
+        System.out.println(directorRepository.findDirectorEntityByNameOrLast_name("Spielberg", "Spielberg"));
+//        movieService.addMovie("Film", 2021, 1, "Ukraine", 1);
         System.out.println("---run---");
     }
 }

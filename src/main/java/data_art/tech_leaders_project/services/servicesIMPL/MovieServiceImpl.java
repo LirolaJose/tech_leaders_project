@@ -1,65 +1,92 @@
 package data_art.tech_leaders_project.services.servicesIMPL;
 
-import data_art.tech_leaders_project.dao.MovieDAO;
-import data_art.tech_leaders_project.dto.DirectorDTO;
-import data_art.tech_leaders_project.dto.GenreDTO;
-import data_art.tech_leaders_project.dto.MovieDTO;
+import data_art.tech_leaders_project.dao.DirectorRepository;
+import data_art.tech_leaders_project.dao.GenreRepository;
+import data_art.tech_leaders_project.dao.MovieRepository;
+import data_art.tech_leaders_project.dto.DirectorEntity;
+import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.dto.MovieEntity;
 import data_art.tech_leaders_project.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
 public class MovieServiceImpl implements MovieService {
-    final MovieDAO movieDAO;
+    final MovieRepository movieRepository;
+    final DirectorRepository directorRepository;
+    final GenreRepository genreRepository;
 
-    public MovieServiceImpl(MovieDAO dao) {
-        this.movieDAO = dao;
+    public MovieServiceImpl(MovieRepository dao, DirectorRepository directorRepository, GenreRepository genreRepository) {
+        this.movieRepository = dao;
+        this.directorRepository = directorRepository;
+        this.genreRepository = genreRepository;
     }
 
     @Override
-    public List<MovieDTO> getMovies() {
+    public List<MovieEntity> getMovies() {
         log.info("get all movies");
-        return movieDAO.findAll();
+        return movieRepository.findAll();
     }
 
     @Override
-    public MovieDTO getMovieByName(String name) {
+    public MovieEntity getMovieByName(String name) {
         log.info("get movie by name {}", name);
-        return movieDAO.findMovieDTOByName(name);
+        return movieRepository.findMovieEntityByName(name);
     }
 
     @Override
-    public List<MovieDTO> getAllMovieByYear(int year) {
+    public List<MovieEntity> getAllMovieByYear(int year) {
         log.info("get list movies by year {}", year);
-        return movieDAO.findAllMovieDTOByYear(year);
+        return movieRepository.findAllMovieEntityByYear(year);
     }
 
     @Override
-    public List<MovieDTO> getAllMoviesByDirector(DirectorDTO directorDTO) {
-        log.info("get list of movies by director {}", directorDTO.getLast_name());
-        return movieDAO.findAllMovieDTOByDirectorDTO(directorDTO);
+    public List<MovieEntity> getAllMoviesByDirector(DirectorEntity directorEntity) {
+        log.info("get list of movies by director {}", directorEntity.getLast_name());
+        return movieRepository.findAllMovieEntityByDirectorEntity(directorEntity);
     }
 
     @Override
-    public List<MovieDTO> getAllMoviesByGenre(GenreDTO genreDTO) {
-        log.info("get list of movie by genre {}", genreDTO.getGenre_name());
-        return movieDAO.findAllMovieDTOByGenres(genreDTO);
+    public List<MovieEntity> getAllMoviesByGenre(GenreEntity genreEntity) {
+        log.info("get list of movie by genre {}", genreEntity.getGenre_name());
+        return movieRepository.findAllMovieEntityByGenres(genreEntity);
     }
 
     @Override
-    public MovieDTO getMovieById(int id) {
+    public MovieEntity getMovieById(int id) {
         log.info("get movie by id {}", id);
-        return movieDAO.findMovieDTOById(id);
+        return movieRepository.findMovieEntityById(id);
     }
 
-//    @Override
-//    public void addMovie(String name, int year, int director_id, String country) {
-//        log.info("add movie with parameters {}, {}, {}, {}", name, year, director_id, country);
-//        movieDAO.addMovie(name, year, director_id, country);
-//    }
+    @Modifying
+    @Override
+    public void addMovie(String name, int year, int directorID, String country, int... genres){
+        log.info("adding new movie: {},{},{},{},{}", name, year, directorID, country, genres);
+        MovieEntity movieEntity = new MovieEntity();
+        Set<GenreEntity> genresSet = new HashSet<>();
+
+        movieEntity.setName(name);
+        movieEntity.setYear(year);
+        movieEntity.setCountry(country);
+        movieEntity.setDirectorEntity(directorRepository.findById(directorID));
+
+//        movieRepository.save(movieEntity);
+        for(int value:genres) {
+            genresSet.add(genreRepository.findById(value));
+        }
+        movieEntity.setGenres(genresSet);
+
+        movieRepository.save(movieEntity);
+        log.info("new movie is added: {}", movieEntity.getName());
+        System.out.println("New movie is added " + movieEntity);
+    }
+
 
 //    @Override
 //    public void deleteMovieById(int id) {

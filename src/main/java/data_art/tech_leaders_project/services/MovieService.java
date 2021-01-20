@@ -1,25 +1,25 @@
 package data_art.tech_leaders_project.services;
 
-import data_art.tech_leaders_project.dto.DirectorDTO;
-import data_art.tech_leaders_project.dto.GenreDTO;
-import data_art.tech_leaders_project.dto.MovieDTO;
+import data_art.tech_leaders_project.dto.DirectorEntity;
+import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.dto.MovieEntity;
 
 import java.util.List;
 
 public interface MovieService {
-    List<MovieDTO> getMovies();
+    List<MovieEntity> getMovies();
 
-    MovieDTO getMovieByName(String name);
+    MovieEntity getMovieByName(String name);
 
-    List<MovieDTO> getAllMovieByYear(int year);
+    List<MovieEntity> getAllMovieByYear(int year);
 
-    List<MovieDTO> getAllMoviesByDirector(DirectorDTO directorDTO);
+    List<MovieEntity> getAllMoviesByDirector(DirectorEntity directorEntity);
 
-    List<MovieDTO> getAllMoviesByGenre(GenreDTO genreDTO);
+    List<MovieEntity> getAllMoviesByGenre(GenreEntity genreEntity);
 
-    MovieDTO getMovieById(int id);
+    MovieEntity getMovieById(int id);
 
-//    void addMovie(String name, int year, int director_id, String country);
+    void addMovie(String name, int year, int director_id, String country, int...genres);
 
-   // void deleteMovieById (int id);
+    // void deleteMovieById (int id);
 }

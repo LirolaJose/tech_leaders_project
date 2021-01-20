@@ -10,8 +10,9 @@ import java.util.Set;
 @ToString(exclude = "movies")
 @Entity
 @Table (name = "genres")
-public class GenreDTO {
+public class GenreEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String genre_name;
 }

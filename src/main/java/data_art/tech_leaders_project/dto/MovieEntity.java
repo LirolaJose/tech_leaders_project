@@ -1,13 +1,10 @@
 package data_art.tech_leaders_project.dto;
 
 import lombok.Data;
-import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.jpa.repository.EntityGraph;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -15,15 +12,16 @@ import java.util.Set;
 @DynamicInsert
 @DynamicUpdate
 @Table (name = "movies")
-public class MovieDTO {
+public class MovieEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private Integer year;
     private String country;
     @OneToOne
     @JoinColumn (name = "director_id")
-    private DirectorDTO directorDTO;
+    private DirectorEntity directorEntity;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -31,6 +29,6 @@ public class MovieDTO {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private Set<GenreDTO> genres;
+    private Set<GenreEntity> genres;
 
 }
