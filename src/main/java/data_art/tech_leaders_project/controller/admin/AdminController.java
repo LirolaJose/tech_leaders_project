@@ -1,8 +1,10 @@
 package data_art.tech_leaders_project.controller.admin;
 
+import data_art.tech_leaders_project.controller.model.AddMovieForm;
 import data_art.tech_leaders_project.dao.DirectorRepository;
 import data_art.tech_leaders_project.dao.GenreRepository;
 import data_art.tech_leaders_project.dao.MovieRepository;
+import data_art.tech_leaders_project.dto.DirectorEntity;
 import data_art.tech_leaders_project.dto.MovieEntity;
 import data_art.tech_leaders_project.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,10 +36,10 @@ public class AdminController {
         return "Movie " + movieName + " is removed";
     }
 
-    @RequestMapping("/addMovie") // why I used the @RequestMapping instead @Post
-    String addMovie(@RequestParam String name, @RequestParam int year, @RequestParam int directorID, @RequestParam String country, @RequestParam int... genres) {
-        movieService.addMovie(name, year, directorID, country, genres);
-        log.info("new movie is added: {}", name);
-        return "New movie is added: " + name;
+    @PostMapping("/addMovie") // why I used the @RequestMapping instead @Post
+    String addMovie(@RequestBody AddMovieForm form) {
+        movieService.addMovie(form.getName(), form.getYear(), form.getDirectorId(), form.getCountry(), form.getGenres());
+        log.info("new movie is added: {}", form.getName());
+        return "New movie is added: " + form.getName();
     }
 }

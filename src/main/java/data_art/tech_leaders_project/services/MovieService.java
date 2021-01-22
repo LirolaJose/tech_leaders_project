@@ -19,7 +19,7 @@ public interface MovieService {
 
     MovieEntity getMovieById(int id);
 
-    void addMovie(String name, int year, int director_id, String country, int...genres);
+    void addMovie(String name, int year, int directorId, String country, List<Integer> genres);
 
     // void deleteMovieById (int id);
 }

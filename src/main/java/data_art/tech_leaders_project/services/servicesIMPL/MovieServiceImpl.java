@@ -66,17 +66,16 @@ public class MovieServiceImpl implements MovieService {
 
     @Modifying
     @Override
-    public void addMovie(String name, int year, int directorID, String country, int... genres){
-        log.info("adding new movie: {},{},{},{},{}", name, year, directorID, country, genres);
+    public void addMovie(String name, int year, int directorId, String country, List<Integer> genres){
+        log.info("adding new movie: {},{},{},{},{}", name, year, directorId, country, genres);
         MovieEntity movieEntity = new MovieEntity();
         Set<GenreEntity> genresSet = new HashSet<>();
 
         movieEntity.setName(name);
         movieEntity.setYear(year);
         movieEntity.setCountry(country);
-        movieEntity.setDirectorEntity(directorRepository.findById(directorID));
+        movieEntity.setDirectorEntity(directorRepository.findById(directorId));
 
-//        movieRepository.save(movieEntity);
         for(int value:genres) {
             genresSet.add(genreRepository.findById(value));
         }

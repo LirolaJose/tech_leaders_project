@@ -5,17 +5,25 @@
     <title>Movies</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/code.js"></script>
+    <script src="custom_select.js"></script>
 </head>
 <body>
 <h1 style="color: coral">Movies</h1>
 
 <div>
-    <input id="button" type="button" onclick="clickIN();" value="Get all movies"/>
+    <input id="buttonGetMovies" type="button" onclick="getListOfMovies();" value="Get all movies"/>
     <input id="buttonAddMovie" type="button" onclick="addNewMovie();" value="Add new movie"/>
+    <input type="button" onclick="getAllDirectors();" value="Directors"/>
+</div>
+<div>
+    <div id="movies"></div>
 </div>
 
 <div>
-    <div id="movies"></div>
+    <div id="enterMovie"></div>
+    <div id="directors"></div>
+    <div id="genres"></div>
+    <div id="createMovie"></div>
 </div>
 
 </body>
