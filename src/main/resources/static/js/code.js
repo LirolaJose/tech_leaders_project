@@ -42,7 +42,6 @@ function addNewMovie() {
     $(divEnterMovie).append("Country: ").append('<input id="country">' + '<br/>');
     getAllDirectors("Director: ", $(divDirectors));
     getAllGenres("Genres: ", $(divGenres));
-    // $(divGenres).append("Genres: ").append('<input id="genre">' + '<br/>');
     $("#createMovie").append('<input type="button" onclick="createMovie();" value="Create movie"/>')
 }
 
@@ -56,7 +55,7 @@ function createMovie() {
     $.ajax({
         type: "POST",
         url: "http://localhost:8081/admin/addMovie",
-        data: JSON.stringify({name: name, year: year, directorId: director, country: country, genres: [genres]}),
+        data: JSON.stringify({name: name, year: year, directorId: director, country: country, genres: genres}),
         contentType: "application/json",
     }).done(function (movie) {
         console.log(movie)
@@ -89,20 +88,14 @@ function getAllGenres(name, div) {
         url: "http://localhost:8081/genres"
     }).done(function (genres) {
         console.log(genres);
-        div.append(name).append('<select id="listOfGenres" multiple="true" size="2"/>');
+        div.append(name).append('<select id="selectedGenres" data-placeholder="Begin typing a name to filter..."  multiple class="chosen-select" name="test">')
         $.each(genres, function (index, genre) {
-            $('#listOfGenres').append($("<option></option>")
-                .attr("value", genre.id)
-                .text(genre.genre_name));
-        })
-        div.append('<input type="button" class="addGenre" value="add"/>' + '<input type="button" class="removeGenre" value="remove"/>');
-        div.append('<select id="selectedGenres" multiple="true" size="2"/>');
-
-        $('.addGenre').click(function () {
-            $('#listOfGenres option:selected').appendTo('#selectedGenres');
-        });
-        $('.removeGenre').click(function () {
-            $('#selectedGenres option:selected').appendTo('#listOfGenres');
+            $(".chosen-select").append($("<option></option>")
+                    .attr("value", genre.id)
+                    .text(genre.genre_name))
+            })
+        $(".chosen-select").chosen({
+            no_results_text: "Oops, nothing found!"
         })
     })
 }
