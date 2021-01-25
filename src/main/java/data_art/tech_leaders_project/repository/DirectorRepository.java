@@ -1,6 +1,6 @@
-package data_art.tech_leaders_project.dao;
+package data_art.tech_leaders_project.repository;
 
-import data_art.tech_leaders_project.dto.DirectorEntity;
+import data_art.tech_leaders_project.entity.DirectorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

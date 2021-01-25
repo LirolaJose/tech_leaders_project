@@ -1,10 +1,9 @@
-package data_art.tech_leaders_project.dto;
+package data_art.tech_leaders_project.entity;
 
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @ToString(exclude = "movies")

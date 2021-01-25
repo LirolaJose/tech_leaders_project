@@ -1,7 +1,7 @@
 package data_art.tech_leaders_project.services.servicesIMPL;
 
-import data_art.tech_leaders_project.dao.GenreRepository;
-import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.repository.GenreRepository;
+import data_art.tech_leaders_project.entity.GenreEntity;
 import data_art.tech_leaders_project.services.GenreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

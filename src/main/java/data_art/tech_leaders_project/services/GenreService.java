@@ -1,6 +1,6 @@
 package data_art.tech_leaders_project.services;
 
-import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.entity.GenreEntity;
 
 import java.util.List;
 

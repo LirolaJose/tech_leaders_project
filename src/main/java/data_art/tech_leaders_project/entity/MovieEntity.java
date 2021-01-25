@@ -1,4 +1,4 @@
-package data_art.tech_leaders_project.dto;
+package data_art.tech_leaders_project.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;

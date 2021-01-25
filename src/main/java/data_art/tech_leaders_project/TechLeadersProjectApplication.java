@@ -1,11 +1,11 @@
 package data_art.tech_leaders_project;
 
 
-import data_art.tech_leaders_project.dao.DirectorRepository;
-import data_art.tech_leaders_project.dao.GenreRepository;
-import data_art.tech_leaders_project.dao.MovieRepository;
-import data_art.tech_leaders_project.dto.DirectorEntity;
-import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.repository.DirectorRepository;
+import data_art.tech_leaders_project.repository.GenreRepository;
+import data_art.tech_leaders_project.repository.MovieRepository;
+import data_art.tech_leaders_project.entity.DirectorEntity;
+import data_art.tech_leaders_project.entity.GenreEntity;
 import data_art.tech_leaders_project.services.DirectorService;
 import data_art.tech_leaders_project.services.GenreService;
 import data_art.tech_leaders_project.services.MovieService;
@@ -19,8 +19,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan ("data_art")
-@EntityScan ("data_art.tech_leaders_project.dto")
-@EnableJpaRepositories (basePackages = "data_art.tech_leaders_project.dao")
+@EntityScan ("data_art.tech_leaders_project.entity")
+@EnableJpaRepositories (basePackages = "data_art.tech_leaders_project.repository")
 @Slf4j
 public class TechLeadersProjectApplication implements CommandLineRunner {
 

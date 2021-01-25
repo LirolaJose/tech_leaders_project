@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <title>Movies</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/code.js"></script>
+    <script src="js/movies.js"></script>
     <script src="custom_select.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
-
 </head>
 <body>
-<h1 style="color: coral">Movies</h1>
+<div class="header"><h1 style="color: coral">Movies</h1></div>
 
 <div>
-    <input id="buttonGetMovies" type="button" onclick="getListOfMovies();" value="Get all movies"/>
+    <input id="buttonGetMovies" type="button" onclick="getAllMovies();" value="Get all movies"/>
     <input id="buttonAddMovie" type="button" onclick="addNewMovie();" value="Add new movie"/>
-    <input type="button" onclick="getAllDirectors('Director', divMovies);" value="Directors"/>
-</div>
-<div>
-    <div id="movies"></div>
+    <input id="buttonDirectors" type="button" onclick="javascript:location.href='directors.html'" value="Directors"/>
 </div>
 
+<div id="infoBlock"></div>
+
 <div>
-    <div id="enterMovie"></div>
+    <div id="addMovieBlock"></div>
     <div id="directors"></div>
     <div id="genres"></div>
     <div id="createMovie"></div>
-</div>
 
+</div>
 </body>
 </html>
 

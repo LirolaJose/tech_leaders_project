@@ -1,7 +1,7 @@
 package data_art.tech_leaders_project.controller;
 
-import data_art.tech_leaders_project.dao.GenreRepository;
-import data_art.tech_leaders_project.dto.GenreEntity;
+import data_art.tech_leaders_project.repository.GenreRepository;
+import data_art.tech_leaders_project.entity.GenreEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

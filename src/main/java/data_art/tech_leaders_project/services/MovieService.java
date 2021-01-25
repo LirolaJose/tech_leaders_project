@@ -1,8 +1,8 @@
 package data_art.tech_leaders_project.services;
 
-import data_art.tech_leaders_project.dto.DirectorEntity;
-import data_art.tech_leaders_project.dto.GenreEntity;
-import data_art.tech_leaders_project.dto.MovieEntity;
+import data_art.tech_leaders_project.entity.DirectorEntity;
+import data_art.tech_leaders_project.entity.GenreEntity;
+import data_art.tech_leaders_project.entity.MovieEntity;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package data_art.tech_leaders_project.controller;
 
-import data_art.tech_leaders_project.dao.DirectorRepository;
-import data_art.tech_leaders_project.dto.DirectorEntity;
-import data_art.tech_leaders_project.dto.MovieEntity;
+import data_art.tech_leaders_project.repository.DirectorRepository;
+import data_art.tech_leaders_project.entity.DirectorEntity;
+import data_art.tech_leaders_project.entity.MovieEntity;
 import data_art.tech_leaders_project.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
