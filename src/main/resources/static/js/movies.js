@@ -7,7 +7,6 @@ function getAllMovies() {
         url: "http://localhost:8081/movies/allMovies"
     }).done(function (listOfMovies) {
         console.log(listOfMovies);
-        // $(divInfoBlock).html(listOfMovies);
         $(divInfoBlock).empty();
         $.each(listOfMovies, function (index, movie) {
             $(divInfoBlock)
@@ -35,6 +34,7 @@ function movieInfo(id) {
 }
 
 function addNewMovie() {
+    $(divInfoBlock).empty()
     $(divAddMovie).html('<h2 style="color: steelblue">Enter movie details:</h2>')
     $(divAddMovie).append("Name: ").append('<input id="movieName">' + '<br/>')
         .append("Year: ").append('<input id="year">' + '<br/>')
@@ -82,42 +82,7 @@ function getAllDirectors(name, div) {
     })
 }
 
-function directors() {
-    $(divInfoBlock).empty()
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8081/directors"
-    }).done(function (directors) {
-        console.log(directors);
-        $.each(directors, function (index, director) {
-            $("#listOfDirectors").append(index + 1 + ":" + director.name + " " + director.last_name + '<br/>')
-        });
-    })
 
-    $("#text").html('<h2 style="color: steelblue">Create new director:</h2>');
-
-    $("#addDirector").append('<input type="button" onclick="createDirector()" value="Create director" />');
-    $("#name").append("Name: ").append('<input id="nameDirector"/>');
-    $("#lastName").append("Last name: ").append('<input id="lastNameDirector"/>');
-
-    // getAllDirectors("Directors: ", $("#listOfDirectors"));
-}
-
-function createDirector() {
-    var nameDir = $("#nameDirector").val();
-    var lastNameDir = $("#lastNameDirector").val();
-
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8081/admin/addDirector",
-        data: JSON.stringify({name: nameDir, lastName: lastNameDir}),
-        contentType: "application/json",
-    }).done(function (director) {
-        console.log(director)
-    }).fail(function (err) {
-        $("#movies").html("<p>Error!</p>");
-    });
-}
 
 function getAllGenres(name, div) {
     $.ajax({

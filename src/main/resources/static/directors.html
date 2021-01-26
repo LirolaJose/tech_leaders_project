@@ -5,6 +5,8 @@
     <title>Directors</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/movies.js"></script>
+    <script src="js/directors.js"></script>
+    <script src="directors.html"></script>
     <script src="custom_select.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
@@ -18,10 +20,11 @@
 
 <div id="buttons">
     <input id="buttonGetAllDirectors" type="button" onclick="directors()" value="Directors">
-    <input id="buttonCreateDirector" type="button" onclick="createDirector()" value="Add new Director">
+    <input id="buttonAddNewDirector" type="button" onclick="addNewDirector()" value="Add new Director">
+    <input id="buttonMovies" type="button" onclick="javascript:location.href='movies.html'" value="Movies">
 </div>
 
-<div id="infoDirectors">
+<div>
     <div id="listOfDirectors"></div>
     <div id="text"></div>
     <div id="name"></div>
