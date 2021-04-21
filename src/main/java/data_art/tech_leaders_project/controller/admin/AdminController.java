@@ -12,6 +12,8 @@ import data_art.tech_leaders_project.services.MovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin")
 @Slf4j
@@ -29,6 +31,12 @@ public class AdminController {
         this.directorRepository = directorRepository;
         this.genreRepository = genreRepository;
         this.directorService = directorService;
+    }
+
+    @RequestMapping("/allMovies")
+    public List<MovieEntity> getMovies() {
+        log.info("show all movies in the localhost 8081");
+        return movieService.getMovies();
     }
 
     @RequestMapping("/deleteMovie")

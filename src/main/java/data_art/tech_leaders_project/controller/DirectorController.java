@@ -11,8 +11,7 @@ import java.util.List;
 @RestController
 @Slf4j
 public class DirectorController {
-    final
-    DirectorRepository directorRepository;
+    final DirectorRepository directorRepository;
 
     public DirectorController(DirectorRepository directorRepository) {
         this.directorRepository = directorRepository;

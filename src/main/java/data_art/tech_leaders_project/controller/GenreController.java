@@ -11,8 +11,7 @@ import java.util.Set;
 @RestController
 @Slf4j
 public class GenreController {
-    final
-    GenreRepository genreRepository;
+    final GenreRepository genreRepository;
 
     public GenreController(GenreRepository genreRepository) {
         this.genreRepository = genreRepository;
